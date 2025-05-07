@@ -1,0 +1,10 @@
+fastapi==0.95.2
+uvicorn==0.22.0
+pydantic==1.10.7
+requests==2.31.0
+psycopg[binary]==3.2.7
+sqlalchemy==1.4.46
+cryptography==42.0.2
+python-dotenv==1.0.0
+celery==5.3.6
+redis==5.0.1

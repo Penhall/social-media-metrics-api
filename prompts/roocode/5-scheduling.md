@@ -1,0 +1,17 @@
+# Agendamento e Tarefas Assíncronas (15 Tarefas)
+
+81. "No modo Code, configure o Celery em `app/workers/celery_config.py` com broker Redis (`CELERY_BROKER_URL` do .env)."
+82. "No modo Code, gere um arquivo `app/workers/schedules.py` para definir periodicidade das tarefas (ex.: coletar métricas a cada 6h)."
+83. "No modo Code, crie um arquivo `app/workers/metric_tasks.py` com tarefa `fetch_daily_metrics()` para coleta diária automática."
+84. "No modo Code, adicione ao `app/workers/metric_tasks.py` tarefa `cleanup_old_metrics()` para remoção de dados antigos (30+ dias)."
+85. "No modo Code, gere um script `scripts/start_celery.sh` para iniciar workers Celery com configurações otimizadas."
+86. "No modo Code, crie um arquivo `app/utils/task_utils.py` com funções para monitoramento de tarefas (`get_task_status()`)."
+87. "No modo Code, adicione ao `app/main.py` endpoint `GET /tasks/{task_id}` para verificar status de tarefas assíncronas."
+88. "No modo Code, gere um arquivo `app/workers/email_tasks.py` com tarefa `send_weekly_report()` para envio de relatórios por email."
+89. "No modo Code, configure beat schedule no `app/workers/celery_config.py` para execução periódica das tarefas."
+90. "No modo Code, crie um arquivo `app/services/task_service.py` com função `schedule_metric_fetch()` para agendamento sob demanda."
+91. "No modo Code, adicione ao `app/api/endpoints/tasks.py` rota `POST /tasks/schedule` para agendar coletas via API."
+92. "No modo Code, gere um arquivo `app/utils/priority_queue.py` para gerenciamento de tarefas prioritárias."
+93. "No modo Code, crie um arquivo `scripts/monitor_tasks.py` para monitorar saúde das workers Celery."
+94. "No modo Code, adicione ao `app/utils/task_utils.py` função `retry_failed_tasks()` para tratamento de falhas."
+95. "No modo QA, teste execução de tarefas assíncronas e verifique logs do Celery para erros."

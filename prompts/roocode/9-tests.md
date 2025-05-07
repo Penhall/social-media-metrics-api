@@ -1,0 +1,17 @@
+# Testes e Qualidade (15 Tarefas)
+
+111. "No modo Code, crie arquivo `tests/conftest.py` com fixtures para client FastAPI e sessão do banco de dados."
+112. "No modo Code, gere arquivo `tests/test_users.py` com testes para rotas de usuários usando `pytest`."
+113. "No modo Code, crie arquivo `tests/test_metrics.py` com testes para rotas de métricas e validações."
+114. "No modo Code, gere arquivo `tests/test_auth.py` com testes para autenticação JWT e permissões."
+115. "No modo Code, adicione ao `pyproject.toml` dependências de testes: `pytest`, `pytest-cov`, `requests-mock`."
+116. "No modo Code, crie arquivo `scripts/run_tests.sh` para executar testes com cobertura (`pytest --cov`)."
+117. "No modo Code, gere arquivo `tests/test_services.py` com testes unitários para serviços principais."
+118. "No modo Code, adicione CI básico em `.github/workflows/tests.yml` para rodar testes no push."
+119. "No modo Code, crie arquivo `tests/test_integrations.py` com testes de integração para APIs externas (mockadas)."
+120. "No modo Code, gere arquivo `tests/test_tasks.py` com testes para tarefas assíncronas do Celery."
+121. "No modo Code, adicione ao `scripts/run_tests.sh` opção para gerar relatório HTML de cobertura."
+122. "No modo Code, implemente testes de carga em `tests/load_testing/` usando `locust`."
+123. "No modo Code, gere arquivo `tests/test_security.py` com testes para vulnerabilidades conhecidas."
+124. "No modo Code, adicione ao `pyproject.toml` dependência `pytest-mock` para testes com mocks."
+125. "No modo QA, execute pipeline completa de testes e verifique cobertura mínima de 80%."

@@ -1,0 +1,17 @@
+# Configuração Inicial do Projeto (15 Tarefas)
+
+1. "No modo Architect, planeje a criação de um repositório Git no GitHub chamado 'social-media-metrics-api' usando MCP Server (`gh repo create`). Gere um README.md com uma descrição do projeto (API para coleta de métricas de redes sociais)."
+2. "No modo Code, crie um arquivo `requirements.txt` com as dependências `fastapi`, `uvicorn`, `pydantic`, `requests`, `psycopg2`, `sqlalchemy`, `cryptography`, `python-dotenv`, `celery`, `redis`."
+3. "No modo Code, gere um arquivo `.gitignore` com entradas para `venv/`, `__pycache__/`, `.env`, e arquivos sensíveis como `*.log`."
+4. "No modo Architect, planeje a criação de um ambiente virtual Python com `venv`. Gere o comando para criar o ambiente (`python -m venv venv`)."
+5. "No modo Code, crie um arquivo `.env` com variáveis `DATABASE_URL`, `API_KEYS`, `CELERY_BROKER_URL`, e configure o carregamento com `python-dotenv`."
+6. "No modo Code, gere um comando para instalar as dependências do `requirements.txt` (`pip install -r requirements.txt`)."
+7. "No modo Code, crie a estrutura de pastas: `app/`, `app/api/`, `app/core/`, `app/db/`, `app/models/`, `app/services/`, `tests/`."
+8. "No modo Ask, atualize o README.md com instruções detalhadas de instalação (clonar repositório, criar venv, instalar dependências) e execução (`./run.sh`)."
+9. "No modo Code, configure o linter `flake8` com um arquivo `.flake8` definindo padrões de código (ex.: max-line-length=88)."
+10. "No modo Code, configure o formatador `black` com um arquivo `pyproject.toml` para padronizar o estilo do código."
+11. "No modo Code, gere um script `setup.sh` para automatizar a criação do venv e instalação de dependências."
+12. "No modo Code, gere um script `run.sh` para iniciar o servidor FastAPI com `uvicorn app.main:app --reload`."
+13. "No modo QA, teste a execução do script `run.sh` e verifique se o servidor FastAPI inicia sem erros em `http://localhost:8000`."
+14. "No modo Code, crie um arquivo `app/__init__.py` para inicializar o módulo `app`."
+15. "No modo Code, gere um comando para fazer o commit inicial do projeto via MCP Server (`git commit -m 'Initial setup'`) e push para o repositório (`git push origin main`)."

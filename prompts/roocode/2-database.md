@@ -1,0 +1,17 @@
+# Configuração do Banco de Dados (15 Tarefas)
+
+16. "No modo Code, gere um script SQL para criar um banco de dados PostgreSQL chamado `social_metrics_db`. Inclua instruções para executá-lo com `psql`."
+17. "No modo Code, crie um arquivo `app/db/database.py` para configurar a conexão com o PostgreSQL usando `SQLAlchemy`, carregando o `DATABASE_URL` do `.env`."
+18. "No modo Code, gere um script SQL para criar a tabela `platforms` com colunas `platform_id` (SERIAL PRIMARY KEY), `name` (VARCHAR(50) UNIQUE), `api_key` (VARCHAR(255))."
+19. "No modo Code, gere um script SQL para criar a tabela `metrics` com colunas `metric_id` (SERIAL PRIMARY KEY), `user_id` (INT), `platform_id` (INT), `metric_type` (VARCHAR(50)), `value` (NUMERIC), `collected_at` (TIMESTAMP)."
+20. "No modo Code, gere um script SQL para criar a tabela `users` com colunas `user_id` (SERIAL PRIMARY KEY), `name` (VARCHAR(255)), `email` (VARCHAR(255) UNIQUE), `platform_user_id` (VARCHAR(255)), `access_token` (TEXT)."
+21. "No modo Code, gere um script de migração inicial com `Alembic` em `alembic/versions/` para criar as tabelas `users`, `platforms`, e `metrics`."
+22. "No modo QA, teste a conexão com o banco de dados executando uma query simples (`SELECT 1`) via `SQLAlchemy`."
+23. "No modo Code, gere um script SQL para criar índices na tabela `metrics` para as colunas `user_id`, `platform_id`, e `collected_at`."
+24. "No modo Code, crie um script Python em `scripts/populate_db.py` para popular o banco com dados de teste (2 usuários, 5 plataformas: X, Facebook, Instagram, WhatsApp, TikTok)."
+25. "No modo QA, teste a inserção de uma métrica de teste na tabela `metrics` usando `SQLAlchemy` e verifique os dados com uma query `SELECT`."
+26. "No modo Code, crie um arquivo `app/db/models.py` com modelos `SQLAlchemy` para `User`, `Platform`, e `Metric`, incluindo `platform_user_id` e `access_token` na tabela `users`."
+27. "No modo Code, gere um arquivo `app/db/crud.py` com funções CRUD (create, read, update, delete) para o modelo `User`."
+28. "No modo Code, adicione ao `app/db/crud.py` funções CRUD (create, read) para o modelo `Metric`."
+29. "No modo Code, gere um script SQL para adicionar uma constraint de unicidade em `platform_user_id` por `platform_id` na tabela `users` (ex.: UNIQUE(platform_id, platform_user_id))."
+30. "No modo Ask, crie um arquivo `docs/database_schema.md` documentando o esquema do banco de dados com descrições das tabelas e colunas."
