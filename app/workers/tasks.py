@@ -1,61 +1,45 @@
-from celery import shared_task
-from typing import Dict, List
-import logging
-from datetime import datetime
+from celery import Celery
+from datetime import timedelta
+from app.core.config import settings
+from app.services.facebook_service import FacebookService
+from scripts.refresh_tokens import TokenRefresher
 
-from app.utils.api_utils import make_api_request
-from app.utils.date_utils import get_date_range
-from app.services.metric_service import create_metric
-from app.db.database import SessionLocal
+app = Celery('tasks', broker=settings.CELERY_BROKER_URL)
 
-logger = logging.getLogger(__name__)
+# Configuração de agendamento
+app.conf.beat_schedule = {
+    'refresh-tokens-daily': {
+        'task': 'app.workers.tasks.refresh_tokens',
+        'schedule': timedelta(days=1),
+        'options': {'queue': 'maintenance'}
+    },
+}
 
-@shared_task(bind=True, name='fetch_social_metrics')
-def fetch_social_metrics(self, platform: str, user_id: int) -> Dict:
-    """Task para coletar métricas de redes sociais"""
+@app.task(bind=True, max_retries=3)
+def refresh_tokens(self):
+    """Tarefa agendada para refresh de tokens OAuth2"""
     try:
-        db = SessionLocal()
-        
-        # Implementações específicas por plataforma
-        if platform == 'instagram':
-            metrics = _fetch_instagram_metrics(user_id)
-        elif platform == 'twitter':
-            metrics = _fetch_twitter_metrics(user_id)
-        else:
-            raise ValueError(f"Plataforma não suportada: {platform}")
-
-        # Salva métricas no banco
-        for metric in metrics:
-            create_metric(db, metric)
-
-        return {'status': 'success', 'metrics_count': len(metrics)}
-        
+        refresher = TokenRefresher()
+        refresher.refresh_all_tokens()
     except Exception as e:
-        logger.error(f"Error fetching {platform} metrics: {str(e)}")
+        self.retry(exc=e, countdown=300)
+
+@app.task
+def process_facebook_event(event_type: str, event_data: dict, page_id: str):
+    """Processa eventos do Facebook de forma assíncrona"""
+    fb_service = FacebookService()
+    
+    try:
+        if event_type == "feed":
+            # Processar novos posts/comentários
+            fb_service.process_feed_event(event_data, page_id)
+        elif event_type == "mention":
+            # Processar menções
+            fb_service.process_mention(event_data, page_id)
+        elif event_type == "messages":
+            # Processar mensagens
+            fb_service.process_message(event_data, page_id)
+            
+    except Exception as e:
+        # TODO: Implementar retry e logging
         raise self.retry(exc=e, countdown=60)
-    finally:
-        db.close()
-
-def _fetch_instagram_metrics(user_id: int) -> List[Dict]:
-    """Implementação específica para Instagram"""
-    # TODO: Implementar chamada real à API do Instagram
-    start_date, end_date = get_date_range(days=7)
-    return [{
-        'user_id': user_id,
-        'platform_id': 1,  # ID do Instagram
-        'metric_name': 'followers',
-        'value': 1000,
-        'collected_at': datetime.now()
-    }]
-
-def _fetch_twitter_metrics(user_id: int) -> List[Dict]:
-    """Implementação específica para Twitter"""
-    # TODO: Implementar chamada real à API do Twitter
-    start_date, end_date = get_date_range(days=7)
-    return [{
-        'user_id': user_id,
-        'platform_id': 2,  # ID do Twitter
-        'metric_name': 'followers',
-        'value': 500,
-        'collected_at': datetime.now()
-    }]

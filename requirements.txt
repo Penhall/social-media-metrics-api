@@ -1,9 +1,10 @@
 fastapi==0.104.1
 uvicorn==0.22.0
 pydantic~=2.0
+pydantic-settings
 # typing-extensions será resolvido automaticamente pelas outras dependências
 requests==2.31.0
-psycopg2-binary~=2.9.0 
+psycopg2-binary~=2.9.0
 # SQLAlchemy 1.4.x espera psycopg2 (v2), não psycopg v3
 sqlalchemy==1.4.46
 # Nota: SQLAlchemy 1.4.x é antigo. Se houver problemas, pode ser necessário atualizar para 2.x,

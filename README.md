@@ -27,6 +27,25 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
+## Configuração
+
+### TikTok API
+1. Obter credenciais de desenvolvedor em [TikTok for Developers](https://developers.tiktok.com/)
+2. Configurar no arquivo `.env`:
+```
+TIKTOK_CLIENT_KEY=your_client_key
+TIKTOK_CLIENT_SECRET=your_client_secret
+TIKTOK_ACCESS_TOKEN=initial_access_token
+TIKTOK_REFRESH_TOKEN=initial_refresh_token
+```
+
+### Redis Cache
+1. Instalar Redis localmente ou configurar URL remota
+2. Definir no `.env`:
+```
+REDIS_URL=redis://localhost:6379
+```
+
 ## Execução
 ```bash
 # Iniciar servidor FastAPI
