@@ -90,4 +90,9 @@ class Settings(BaseSettings):
         # Remover env_file = ".env"
         extra = 'ignore'
 
-settings = Settings()
+def get_settings():
+    """Factory function para obter configurações com lazy loading"""
+    return Settings()
+
+# Não instanciar Settings automaticamente
+# settings = Settings()

@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.utils.correlation import CorrelationIdMiddleware
 
 app = FastAPI()
+
+# Middleware para Correlation IDs
+app.add_middleware(CorrelationIdMiddleware)
 
 # Configuração CORS
 app.add_middleware(

@@ -1,3 +1,27 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "social-media-metrics-api"
+version = "0.1.0"
+description = "API para coleta de métricas de redes sociais"
+authors = [{name = "Seu Nome", email = "seu@email.com"}]
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/seu-usuario/social-media-metrics-api"
+
+[tool.setuptools]
+packages = ["app", "alembic"]
+include-package-data = true
+
 [tool.black]
 line-length = 88
 target-version = ['py310']

@@ -2,7 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 # Remover import os e load_dotenv, pois as configurações virão de app.core.config
-from app.core.config import settings # Importar as configurações centralizadas
+from app.core.config import get_settings # Importar a função para obter configurações
+settings = get_settings() # Obter configurações quando necessário
 
 # Usar a URI do banco de dados das configurações
 # settings.SQLALCHEMY_DATABASE_URI já lida com a lógica de DATABASE_URL ou POSTGRES_*
